@@ -1,0 +1,7 @@
+.env
+home/__pycache__
+class_based_blog/__pycache__
+# db.sqlite3
+# media
+# static
+# migrations

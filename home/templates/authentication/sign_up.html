@@ -1,0 +1,92 @@
+ {% extends 'base.html' %}
+ {% block title %}Register{% endblock title %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block css %}
+<link href="{% static 'css/sign.css' type="text/css" %}">
+
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=x8U2G54Ozgv3p-DpUHQ0gpTk0J3YbFKxe6DgHPPX7xxBzCDuOnFlPqFW4ggxjs0w154DR9KGbyal3zNGFWQFpvwszghTdgd-ByUDW7Oa1NU" charset="UTF-8"></script><style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+{% endblock css %}
+{% block content %}
+{% include "navbar.html" %}
+<div class=" container mt-2">
+    {% for message in messages %}
+    {{message}}
+    {% endfor %}
+<main class="form-signin container w-50 form-control">
+    <form method="POST" action="{% url 'register' %}" novalidate >
+        {% csrf_token %}
+      {% comment %} <img class="mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> {% endcomment %}
+      <h1 class="h3 mb-3 text-center fw-normal">Register</h1>
+     
+      <div class="row">
+        <div class="form-group col-md-6 mb-0">
+          {{ form.first_name|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-6 mb-0">
+          {{ form.last_name|as_crispy_field }}
+        </div>
+      </div>
+    
+        <div class="form-group  mb-0">
+          {{ form.email|as_crispy_field }}
+        </div>
+        <div class="row">
+        <div class="form-group col-md-6 mb-0">
+          {{ form.password1|as_crispy_field }}
+        </div>
+        <div class="form-group col-md-6 mb-0">
+          {{ form.password2|as_crispy_field }}
+        </div>
+      </div>
+   
+       {% comment %} {% for fm in form %}
+      <div>
+          {{fm.label_tag}}{{fm|crispy}}
+          <small>{{fm.error|striptags}}</small>
+      </div>
+      {% endfor %}  {% endcomment %}
+     {% if form.non_field_errors %}
+      {% for error in form.non_field_errors %}
+     
+      <div class="alert alert-info alert-dismissible fade show mt-2" role="alert">
+          <strong>{{error}}</strong> 
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      {% endfor %}
+
+  {% endif %} 
+      <div class="checkbox mb-3 text-center mt-2 ">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label><br>
+
+      <button class=" btn btn-lg btn-primary w-25 text-center mt-2 " type="submit">Sign Up</button>
+      <br><a class="register mt-2 w-25 btn btn-lg btn-primary text-center" href="{% url 'home' %}">Home</a>
+      <p class="mt-5 mb-3 text-muted text-center">&copy; 2021–2022</p>
+      </div>
+      
+    </form>
+    
+  </main>
+</div>
+
+  
+{% endblock content %}

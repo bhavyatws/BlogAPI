@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block title %}Confirm Delete{% endblock title %} {% block content %}
+{% include 'navbar.html' %}
+<div class="container text-center mt-2">
+    <h3>Are you sure want to delete?</h3>
+    <form method="POST" action="{% url 'delete_post' blog.post_id %}">
+        {% csrf_token %}
+        <button class="btn btn-danger ">Delete</button>
+    </form>
+    <div class="container mt-2"><a class="anchor-tag btn btn-secondary mt-2" href="{% url 'home' %}">Back to Home</a></div>
+</div>
+{% comment %} {% for blog in queryset %} {% endcomment %}
+
+{% comment %} {% endfor %} {% endcomment %}
+
+
+{% endblock content %}

@@ -1,0 +1,1 @@
+web: gunicorn class_based_blog.wsgi
