@@ -176,3 +176,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # 'media' is my media folder
 MEDIA_URL = '/media/'
 #Activating Heroku
 django_heroku.settings(locals())
+#Ecommerce Secret Key-> django-insecure-nw93-^vr_5@8047+b%peuy_$#5b%5h*b38_a1rkc+((m3r3#q+
